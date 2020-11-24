@@ -18,4 +18,6 @@ const Post = new moongose.Schema({
 
     },
 
+}, {
+    timestamps: true
 })
