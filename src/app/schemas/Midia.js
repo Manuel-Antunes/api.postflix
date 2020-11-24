@@ -1,6 +1,6 @@
 import mongoose, { mongo } from 'mongoose';
 
-const Midia = mongoose.Schema({
+const MidiaSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -12,3 +12,5 @@ const Midia = mongoose.Schema({
 }, {
     timestamps: true
 });
+
+export default mongoose.model("Midia", MidiaSchema);

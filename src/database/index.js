@@ -17,6 +17,7 @@ class Database {
             .map(model => model.associate && model.associate(this.connection.models));
     }
     mongo() {
+        console.log(process.env.MONGO_URL);
         Mongoose.connect(process.env.MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,

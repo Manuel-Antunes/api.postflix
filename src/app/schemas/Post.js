@@ -1,6 +1,6 @@
 import mongoose, { mongo } from 'mongoose';
 
-const Post = new moongose.Schema({
+const PostSchema = new mongoose.Schema({
     titulo: {
         type: String,
         required: true
@@ -9,7 +9,7 @@ const Post = new moongose.Schema({
 
     foto: {
         type: Number,
-        required: true
+        required: false
     },
 
     post: {
@@ -20,4 +20,6 @@ const Post = new moongose.Schema({
 
 }, {
     timestamps: true
-})
+});
+
+export default mongoose.model("Post", PostSchema);
