@@ -1,6 +1,6 @@
 import mongoose, { mongo } from 'mongoose';
 
-const MidiaSchema = mongoose.Schema({
+const MidiaSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -8,14 +8,11 @@ const MidiaSchema = mongoose.Schema({
     path: {
         type: String,
         required: true
-    },
-    url: {
-        type: String,
-        virtual: true,
-
     }
 }, {
     timestamps: true
 });
-
+MidiaSchema.virtual("url").get(() => {
+    return `http://localhost:3333/files/${this.path}`;
+});
 export default mongoose.model("Midia", MidiaSchema);

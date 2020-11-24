@@ -1,4 +1,4 @@
-import mongoose, { mongo } from 'mongoose';
+import mongoose, { mongo, Schema } from 'mongoose';
 
 const PostSchema = new mongoose.Schema({
     titulo: {
@@ -8,14 +8,17 @@ const PostSchema = new mongoose.Schema({
     },
 
     foto: {
-        type: Number,
-        required: false
+        type: Schema.Types.ObjectId,
+        ref: "Midia"
     },
-
     post: {
         type: String,
         required: true
     },
+    autor: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    }
 
 }, {
     timestamps: true

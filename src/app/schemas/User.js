@@ -9,9 +9,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    isAuctor: {
-        type: Boolean,
-        default: false,
+    autor: {
+        type: mongoose.Schema.Types.Boolean,
+        required: true,
+        default: false
     },
     password: {
         type: String,

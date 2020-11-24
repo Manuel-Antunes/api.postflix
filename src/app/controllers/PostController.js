@@ -27,7 +27,7 @@ class PostController {
         }
     }
     async index(req, res) {
-        const posts = await Post.find();
+        const posts = await Post.find().populate("autor").populate("foto");
         res.json(posts);
 
     }

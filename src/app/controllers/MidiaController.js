@@ -8,6 +8,7 @@ class MidiaController {
                 name,
                 path
             });
+            console.log(midia.url);
             return res.json(midia);
         } catch (err) {
             return res.status(400).json({ error: err.message });
