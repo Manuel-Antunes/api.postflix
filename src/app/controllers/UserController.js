@@ -1,4 +1,5 @@
 import User from '../schemas/User';
+import bcrypt from 'bcryptjs';
 
 class UserController {
     async store(req, res) {
@@ -9,7 +10,12 @@ class UserController {
             if (existe) {
                 return res.status(400).json({ error: "usuário já cadastrado" });
             }
-            const user = await User.create(req.body);
+            const { email, password, nome } = req.body;
+            const user = await User.create({
+                email,
+                nome,
+                password: bcrypt.hashSync(password)
+            });
             res.json(user);
         } catch (err) {
             res.status(400).json({ error: err.message });
@@ -17,7 +23,7 @@ class UserController {
     }
     async update(req, res) {
         try {
-            const user = await User.findByIdAndUpdate(req.params.id, req.body);
+            const user = await User.findByIdAndUpdate(req.userId, req.body);
             res.json({ ok: true });
         } catch (err) {
             res.status(400).json({ error: err.message });

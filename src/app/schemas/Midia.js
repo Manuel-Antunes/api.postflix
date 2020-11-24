@@ -9,6 +9,11 @@ const MidiaSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    url: {
+        type: String,
+        virtual: true,
+
+    }
 }, {
     timestamps: true
 });
